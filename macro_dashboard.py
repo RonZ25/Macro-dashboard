@@ -104,7 +104,7 @@ with st.spinner("Fetching data from FRED…"):
     # CPI index (SA) -> CPI YoY
     cpi_idx = fetch_fred("CPIAUCSL", start=start_date)  # CPI index (1982-84=100)
     cpi_m = monthlyize(cpi_idx, how="last").rename(columns={"value": "CPI"})
-    cpi_yoy = cpi_yoy_from_index(cpi_m)
+    cpi_yoy = cpi_yoy_from_index(cpi_idx)
 
     # Unemployment rate (monthly, %)
     unrate = fetch_fred("UNRATE", start=start_date)
